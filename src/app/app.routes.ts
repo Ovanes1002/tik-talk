@@ -11,7 +11,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: SearchPageComponent },
+<<<<<<< HEAD
       { path: 'profile/:id', component: ProfilePageComponent },
+=======
+      { path: 'profile', component: ProfilePageComponent },
+>>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
     ],
     canActivate: [canActivateAuth],
   },

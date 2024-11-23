@@ -8,7 +8,11 @@ import { map, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class ProfileService {
+<<<<<<< HEAD
   http = inject(HttpClient);
+=======
+  http = inject(HttpClient); // ну вот инжекст это же экземпляр класса вроде
+>>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
 
   baseApiUrl: string = 'https://icherniakov.ru/yt-course/';
 
@@ -28,9 +32,16 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
   }
 
+<<<<<<< HEAD
   getSubscribersShortList(subsAmount: number = 3) {
     return this.http
       .get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
       .pipe(map((res) => res.items.slice(0, subsAmount)));
+=======
+  getSubscribersShortList() {
+    return this.http
+      .get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
+      .pipe(map((res) => res.items.slice(0, 3)));
+>>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
   }
 }
