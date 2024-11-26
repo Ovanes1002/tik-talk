@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -16,6 +16,7 @@ import { firstValueFrom } from 'rxjs';
     RouterLink,
     AsyncPipe,
     JsonPipe,
+    RouterLinkActive,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -23,6 +24,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class SidebarComponent {
   profileService = inject(ProfileService);
+  baseApiUrl = this.profileService.baseApiUrl;
 
   subscribers$ = this.profileService.getSubscribersShortList();
 
@@ -32,7 +34,7 @@ export class SidebarComponent {
     {
       label: 'Моя страница',
       icon: 'home',
-      link: '',
+      link: 'profile/me',
     },
     {
       label: 'Чаты',

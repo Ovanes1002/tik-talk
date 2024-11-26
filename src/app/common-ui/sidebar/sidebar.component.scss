@@ -18,7 +18,7 @@
   border: none;
   border-radius: 2px;
   background: none;
-  text-align: left;
+
   color: var(--light-color);
   display: grid;
   grid-template-columns: 16px 1fr max-content;
@@ -28,12 +28,9 @@
     weight: 700;
     size: 14px;
   }
-<<<<<<< HEAD
-=======
-  text-decoration: none;
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
   line-height: 24px;
 
+  &.active,
   &:hover,
   &:focus-visible {
     background-color: var(--dark-hover-color);
@@ -59,10 +56,6 @@
 
   &-link {
     color: var(--primary-color);
-<<<<<<< HEAD
-=======
-    text-decoration: none;
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
   }
 
   &-icon {

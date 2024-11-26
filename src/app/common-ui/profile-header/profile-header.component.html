@@ -1,12 +1,18 @@
 @if (profile(); as profile) {
-  @if (profile.avatarUrl) {
-    <img [src]="profile.avatarUrl" alt="" />
-  } @else {
-    <img src="/assets/svg/settings.svg" alt="" />
-  }
-
-  <div class="username-and-name">
-    <h1 class="h4 mb4">{{ profile.firstName }} {{ profile.lastName }}</h1>
-    <span class="regular">{{ profile.username }}</span>
-  </div>
+	@if (profile.avatarUrl) {
+		<img
+				[src]="this.baseApiUrl + profile.avatarUrl"
+				alt=""
+		/>
+	} @else {
+		<img
+				src="/assets/svg/logo-placeholder.svg"
+				alt=""
+		/>
+	}
+	
+	<div class="username-and-name">
+		<h1 class="h4 mb4">{{ profile.firstName }} {{ profile.lastName }}</h1>
+		<span class="regular">{{ profile.username }}</span>
+	</div>
 }

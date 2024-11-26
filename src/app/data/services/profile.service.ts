@@ -8,15 +8,13 @@ import { map, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class ProfileService {
-<<<<<<< HEAD
   http = inject(HttpClient);
-=======
-  http = inject(HttpClient); // ну вот инжекст это же экземпляр класса вроде
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
 
   baseApiUrl: string = 'https://icherniakov.ru/yt-course/';
 
   me = signal<Profile | null>(null);
+
+  filteredProfiles = signal<Profile[]>([]);
 
   getTestAccounts() {
     return this.http.get<Profile[]>(`${this.baseApiUrl}account/test_accounts`);
@@ -32,16 +30,30 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
   }
 
-<<<<<<< HEAD
   getSubscribersShortList(subsAmount: number = 3) {
     return this.http
       .get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
       .pipe(map((res) => res.items.slice(0, subsAmount)));
-=======
-  getSubscribersShortList() {
+  }
+
+  patchProfile(profile: Partial<Profile>) {
+    return this.http.patch<Profile>(`${this.baseApiUrl}account/me`, profile);
+  }
+
+  uploadAvatar(file: File) {
+    const fd = new FormData();
+    fd.append('image', file);
+    return this.http.post<Profile>(
+      `${this.baseApiUrl}account/upload_image`,
+      fd,
+    );
+  }
+
+  filterProfiles(params: Record<string, any>) {
     return this.http
-      .get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
-      .pipe(map((res) => res.items.slice(0, 3)));
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
+      .get<
+        Pageble<Profile>
+      >(`${this.baseApiUrl}account/accounts`, { params: params })
+      .pipe(tap((res) => this.filteredProfiles.set(res.items)));
   }
 }

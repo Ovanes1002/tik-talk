@@ -9,17 +9,13 @@
 		<li *ngFor="let menuItem of menuItems">
 			<a
 					class="menu-item"
-					[routerLink]="menuItem.link"
+					[routerLink]="[menuItem.link]"
+					[routerLinkActive]="'active'"
 			>
 				<svg [icon]="menuItem.icon"></svg>
 				<span>{{ menuItem.label }}</span>
 			</a>
 		</li>
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
 	</ul>
 </nav>
 
@@ -47,24 +43,16 @@
 	@if (me(); as me) {
 		@if (me.avatarUrl) {
 			<img
-					[src]="me.avatarUrl"
+					[src]="this.baseApiUrl + me.avatarUrl"
 					alt=""
 			>
 		} @else {
 			<img
-					src="/assets/svg/settings.svg"
+					src="/assets/svg/logo-placeholder.svg"
 					alt=""
 			>
 		}
-<<<<<<< HEAD
-
 		<div class="medium-text username-text">{{ me.username }}</div>
-
-=======
-		
-		<div class="medium-text username-text">{{ me.username }}</div>
-		
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
 		<a
 				[routerLink]="['settings']"
 				class="settings-button"
@@ -72,8 +60,6 @@
 			<svg icon="settings"></svg>
 		</a>
 	}
-<<<<<<< HEAD
+
 </footer>
-=======
-</footer>
->>>>>>> 5a72e20ec046e84dfcee654900344be1b5643110
+

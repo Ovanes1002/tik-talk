@@ -7,10 +7,13 @@
   --light-color: #ffffff;
   --primary-color: #ae7aff;
   --gray-color: #5c5c5c;
+  --light-transparent-color: rgba(255, 255, 255, 0.75);
 
   --dark-hover-color: #161616;
 
-  --border-radius-small: 4px;
+  --border-radius-small: 2px;
+
+  --border-bottom-light: 1px solid var(--light-color);
 }
 
 *,
@@ -66,6 +69,7 @@ body {
 .skill-tag {
   display: inline;
   height: 24px;
+  margin-right: 4px;
   padding: 0 8px;
   border: 1px solid var(--light-color);
   border-radius: var(--border-radius-small);
@@ -76,6 +80,21 @@ body {
 
 a {
   text-decoration: none;
+}
+
+input,
+textarea {
+  font: {
+    family: "JetBrains Mono", sans-serif;
+    size: 14px;
+    weight: 400;
+  }
+  line-height: 21px;
+  text-align: left;
+
+  &::placeholder {
+    color: var(--light-color);
+  }
 }
 
 .h1 {
@@ -145,7 +164,7 @@ a {
   padding: 12px 20px;
   color: var(--light-color);
   border: 1px solid var(--light-color);
-  border-radius: 2px;
+  border-radius: var(--border-radius-small);
   font: {
     size: 12px;
     family: "JetBrains Mono", sans-serif;
@@ -153,4 +172,41 @@ a {
   }
   line-height: 21px;
   background-color: var(--dark-color);
+}
+
+.tt-form {
+  &-label {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    &__text {
+      color: var(--light-transparent-color);
+      font: {
+        size: 12px;
+        weight: 500;
+      }
+      line-height: 16px;
+    }
+  }
+
+  &-input {
+    height: 33px;
+    color: var(--light-color);
+    //padding-block: 12px;
+    border: none;
+    border-bottom: var(--border-bottom-light);
+    background: none;
+    font: {
+      size: 14px;
+      weight: 400;
+      style: normal;
+    }
+    line-height: 21px;
+  }
+}
+
+.tt-textarea {
+  height: 84px;
+  resize: none;
 }
